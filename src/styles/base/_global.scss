@@ -1,0 +1,16 @@
+// --scrollbar-width is set by js
+
+html {
+  height: 100%;
+}
+body {
+  --full-width: calc(100vw - var(--scrollbar-width));
+
+  height: 100%;
+  overflow-y: scroll;
+
+  .wrapper {
+    width: var(--full-width);
+    min-height: 100%;
+  }
+}
