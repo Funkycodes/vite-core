@@ -1,1 +1,3 @@
-alert("Hello User");
+import { resetViewportWidth } from "./utils";
+
+resetViewportWidth();
