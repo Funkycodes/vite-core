@@ -1,3 +1,10 @@
 @import "./base/reset";
 @import "./base/fonts";
 @import "./base/global";
+
+@import "./abstracts/variables";
+
+@import "./shared/typography";
+@import "./shared/links";
+
+@import "./pages/home";
