@@ -76,7 +76,7 @@ export default class Preloader extends Animation {
   }
 
   animateIn() {
-
+    gsap.to(this.element, { autoAlpha: 1 })
   }
   destroy() {
     this.element.parentNode.removeChild(this.element);

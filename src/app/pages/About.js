@@ -1,5 +1,4 @@
 import Page from "../classes/Page";
-import { delay } from "../utils/math";
 
 export default class Home extends Page {
   constructor() {
@@ -9,18 +8,17 @@ export default class Home extends Page {
         wrapper: ".about__wrapper",
       },
       classes: {
-        activeClassName: "about--active",
+        active: "about--active",
       },
     });
   }
 
   async show() {
     super.show();
-    await delay(400);
-    this.element.classList.add(this.classes.activeClassName);
+    this.element.classList.add(this.classes.active);
   }
   hide() {
     super.hide();
-    this.element.classList.remove(this.classes.activeClassName);
+    this.element.classList.remove(this.classes.active);
   }
 }

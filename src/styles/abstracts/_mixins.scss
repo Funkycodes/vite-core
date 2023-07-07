@@ -1,11 +1,7 @@
 // Mixins and Extends
 
 %page {
-  @extend %cover;
-
-  position: fixed;
-  z-index: 9;
-  overflow: hidden;
+  position: relative;
 
   opacity: 0;
   visibility: hidden;

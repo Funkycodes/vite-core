@@ -2,20 +2,35 @@
   @extend %page;
 
   &--active {
-    @extend %page--active
+    @extend %page--active;
   }
 
   &__wrapper {
     @extend %cover;
-    height:auto;
-    padding:4rem;
-    will-change: transform;
+    height: auto;
+    padding: 4rem;
+  }
 
-    &::-webkit-scrollbar {
-      display: none;
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__main {
+    margin-top: 2rem;
+
+    h1 {
+      font-size: 9.6rem;
+      font-style: italic;
+      font-size: 700;
+
+      &:last-of-type {
+        margin-bottom: 1rem;
+      }
     }
-    p {
-      height: 120vh;
+
+    [data-animation="paragraph"] {
+      margin-top: 1rem;
     }
   }
 }

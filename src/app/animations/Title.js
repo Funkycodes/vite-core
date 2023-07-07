@@ -1,5 +1,5 @@
-import Animation from "../classes/Animation"
 import gsap from "gsap";
+import Animation from "../classes/Animation"
 
 export default class Title extends Animation {
   constructor({
@@ -12,11 +12,11 @@ export default class Title extends Animation {
 
   animateIn() {
     gsap.fromTo(this.element, {
-      x: 10,
+      y: "-100%",
       autoAlpha: 0,
     }, {
-      x: 0,
-      autoAlpha: 1
+      y: 0,
+      autoAlpha: 1,
     })
   }
   animateOut() {
