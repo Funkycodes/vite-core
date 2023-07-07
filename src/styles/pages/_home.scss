@@ -1,1 +1,21 @@
+.home {
+  @extend %page;
 
+  &--active {
+    @extend %page--active
+  }
+
+  &__wrapper {
+    @extend %cover;
+    height:auto;
+    padding:4rem;
+    will-change: transform;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    p {
+      height: 120vh;
+    }
+  }
+}

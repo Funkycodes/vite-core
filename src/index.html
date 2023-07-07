@@ -16,14 +16,10 @@
       name="description"
       content="App bootstrapped using vite build system"
     />
-
-    <link rel="stylesheet" href="./src/styles/style.scss" media="all" />
     <title>Vite App</title>
   </head>
   <body>
-    <div class="wrapper">
-      <h1>Vite + Sass Template</h1>
-    </div>
-    <script type="module" src="./src/app/main.js"></script>
+    <pug src="src/views/index.pug"></pug>
+    <script type="module" defer src="./app/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,52 @@
+// Mixins and Extends
+
+%page {
+  @extend %cover;
+
+  position: fixed;
+  z-index: 9;
+  overflow: hidden;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: auto;
+  }
+}
+
+%cover {
+  position: absolute;
+  object-fit: cover;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+%ovh {
+  overflow: hidden;
+}
+%wrapper {
+  margin: auto;
+  width: 90%;
+  max-width: 145rem;
+}

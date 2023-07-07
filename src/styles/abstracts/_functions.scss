@@ -1,0 +1,16 @@
+/// Base url link
+/// @type string
+$base-url: "/assets/";
+
+/// @param {String} $base - base url
+/// @param {String} $type - asset type folder eg "fonts/"
+/// @param {String} $path - asset path
+/// @return {Url}
+
+@function asset($base, $type, $path) {
+  @return url($base + $type + $path);
+}
+
+@function font($path, $base: $base-url) {
+  @return asset($base, "fonts/", $path);
+}
