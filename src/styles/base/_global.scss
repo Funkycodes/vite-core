@@ -33,7 +33,7 @@ body {
   overflow-x: hidden;
 
   &::-webkit-scrollbar {
-    width: 4px;
+    width: clamp(4px, 0.4rem, 8px);
   }
   &::-webkit-scrollbar-thumb {
     background-color: #272727;

@@ -37,7 +37,6 @@ export default class Page {
         }
       }
     }
-    this.createAnimations()
   }
 
   createAnimations() {
@@ -56,6 +55,7 @@ export default class Page {
   }
 
   show() {
+    this.createAnimations()
     return Promise.resolve();
   }
 

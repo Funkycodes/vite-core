@@ -1,6 +1,5 @@
-.preloader  {
+.preloader {
   @extend %cover;
-  visibility: hidden;
   z-index: 12;
   &__wrapper {
     @extend %cover;

@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import Splitting from "splitting";
 import Animation from "../classes/Animation"
 
 export default class Title extends Animation {
@@ -7,16 +8,25 @@ export default class Title extends Animation {
     elements
   }) {
     super({ element, elements });
+    this.splitText()
+    this.elementLineSpans = this.element.querySelectorAll("span");
     this.animateOut()
   }
-
+  splitText() {
+    Splitting({ target: this.element, by: "lines" })
+  }
   animateIn() {
-    gsap.fromTo(this.element, {
-      y: "-100%",
-      autoAlpha: 0,
-    }, {
-      y: 0,
-      autoAlpha: 1,
+    this.elementLineSpans.forEach(line => {
+      const lineIndex = line.style.getPropertyValue("--line-index");
+      gsap.timeline()
+        .set(this.element, { autoAlpha: 1, overflow: "hidden" })
+        .fromTo(line, {
+          y: "-100%"
+        }, {
+          y: 0,
+          duration: 1.2,
+          ease: "expo.out"
+        })
     })
   }
   animateOut() {

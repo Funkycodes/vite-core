@@ -4,10 +4,10 @@ import { delay } from "./utils/math";
 import Cursor from "./components/Cursor";
 import Lenis from "@studio-freight/lenis";
 import Preloader from "./components/Preloader";
-import { useSessionStorage } from "./utils/hamo";
 import Transition from "./components/Transition";
 
 import "../styles/style.scss";
+import "splitting/dist/splitting.css"
 
 class App {
   constructor() {
@@ -44,13 +44,9 @@ class App {
   async createComponents() {
     this.cursor = new Cursor();
     this.transition = new Transition();
+    this.preloader = new Preloader();
+    this.onPreloaded()
 
-    if (!useSessionStorage("preloader", "shown")) {
-      this.preloader = new Preloader();
-      this.onPreloaded()
-    } else {
-      this.page.show();
-    }
   }
 
   async onChange({ push = true, url = null }) {
@@ -129,3 +125,6 @@ class App {
 }
 
 new App();
+setTimeout(() => {
+  console.log("%c I tried my best. Love❤️. Habib Carter Olorunfemi theMaskedOtaku. Bye ", "background-color:grey; color:white; font-family: 'Segoe UI'")
+}, 10000)

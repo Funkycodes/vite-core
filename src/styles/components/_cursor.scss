@@ -1,11 +1,11 @@
 .cursor {
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   z-index: 12;
   opacity: 0.7;
   pointer-events: none;
-  transition: transform 0.4s ease-out;
+  transition: transform 0.2s linear;
 
   &__inner {
     fill: black;
