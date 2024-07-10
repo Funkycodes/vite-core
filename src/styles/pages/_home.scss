@@ -1,14 +1,12 @@
 .home {
   @extend %page;
 
-  &--active {
-    @extend %page--active;
-  }
-
   &__wrapper {
-    @extend %cover;
-    height: auto;
-    padding-inline: 4rem;
+    @include container;
+    @include flex($align: stretch, $flow: column nowrap);
+
+    min-height: calc(100 * var(--vh, 1dvh));
+    height: 300vh;
   }
 
   &__nav {
@@ -34,10 +32,6 @@
       font-size: 9.6rem;
       font-style: italic;
       font-size: 700;
-
-      &:last-of-type {
-        margin-bottom: 1rem;
-      }
     }
 
     [data-animation="paragraph"] {

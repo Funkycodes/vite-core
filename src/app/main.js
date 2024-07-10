@@ -1,52 +1,45 @@
+/*************************/
+/*     File Imports      */
+/*************************/
 import Home from "./pages/Home";
 import AutoBind from "auto-bind";
 import { delay } from "./utils/math";
-import Cursor from "./components/Cursor";
-import Lenis from "@studio-freight/lenis";
-import Preloader from "./components/Preloader";
+import Scroller from "./components/Scroller";
+import Scrollbar from "./components/Scrollbar";
 import Transition from "./components/Transition";
 
 import "../styles/style.scss";
-import "splitting/dist/splitting.css"
+import "splitting/dist/splitting.css";
 
 class App {
-  constructor() {
+  constructor () {
     AutoBind(this);
     this.init();
   }
   init() {
     this.createPages();
-    this.createLenis()
     this.createComponents();
 
     this.addEvents();
     this.addLinkListeners();
-    this.update()
+    this.onResize();
+    this.update();
   }
 
-  async createPages() {
+  createPages() {
     this.pages = {
       "/": new Home(),
     };
     this.url = window.location.pathname;
-    this.page = this.pages[this.url];
+    this.page = this.pages[ this.url ];
+    this.page.show();
   }
-  createLenis() {
-    const lenis = new Lenis({})
 
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-  }
-  async createComponents() {
-    this.cursor = new Cursor();
+  createComponents() {
+    // this.cursor = new Cursor();
+    this.scroller = new Scroller({});
+    this.scrollbar = new Scrollbar();
     this.transition = new Transition();
-    this.preloader = new Preloader();
-    this.onPreloaded()
-
   }
 
   async onChange({ push = true, url = null }) {
@@ -57,26 +50,26 @@ class App {
     this.isFetching = true;
     this.url = url;
 
-    await delay(1500)
+    await delay(1500);
     await this.page.hide();
 
     if (push) {
       window.history.pushState({}, document.title, url);
     }
 
-    this.page = this.pages[url];
+    this.page = this.pages[ url ];
 
-    await delay(1500)
+    await delay(1500);
     this.page.show();
 
     this.isFetching = false;
   }
 
-  onPreloaded() {
-    this.preloader.once("completed", () => {
-      delay(1200).then(() => this.page.show());
-    })
-  }
+  // onPreloaded() {
+  //   this.preloader.once("completed", () => {
+  //     delay(1200).then(() => this.page.show());
+  //   });
+  // }
 
   onPopstate() {
     this.onChange({
@@ -89,13 +82,20 @@ class App {
     if (this.cursor) this.cursor.onMove(e);
   }
 
+  onScroll(e) {
+    this.scrollbar.onScroll(e);
+  }
+  onResize() {
+    document.documentElement.style.setProperty("--vh", window.innerHeight / 100);
+  }
+
   addLinkListeners() {
     document.querySelectorAll("a").forEach((link) => {
       const isLocal = link.href.includes(window.location.origin);
       if (isLocal) {
         link.onclick = (e) => {
           e.preventDefault();
-          this.transition.animate()
+          this.transition.animate();
           this.onChange({
             url: link.href,
           });
@@ -104,27 +104,30 @@ class App {
         link.rel = "noopener";
         link.target = "_blank";
       }
-      link.onmouseenter = () => {
-        this.cursor.onMouseEnter();
-      };
-      link.onmouseleave = () => {
-        this.cursor.onMouseLeave();
-      };
+      // link.onmouseenter = () => {
+      //   this.cursor.onMouseEnter();
+      // };
+      // link.onmouseleave = () => {
+      //   this.cursor.onMouseLeave();
+      // };
     });
   }
 
   addEvents() {
     window.addEventListener("mousemove", this.onMove, { passive: true });
     window.addEventListener("popstate", this.onPopstate, { passive: true });
+    window.addEventListener("resize", this.onResize, { passive: true });
+    window.addEventListener("scroll", this.onScroll, { passive: true });
   }
 
   update() {
-    this.cursor.update();
+    if (this.cursor)
+      this.cursor.update();
+    this.scrollbar.update();
     requestAnimationFrame(this.update);
   }
 }
 
 new App();
-setTimeout(() => {
-  console.log("%c I tried my best. Love❤️. Habib Carter Olorunfemi theMaskedOtaku. Bye ", "background-color:grey; color:white; font-family: 'Segoe UI'")
-}, 10000)
+
+console.log("%c Thanks for visiting our site, from all of us at Studio Infinitus", "background-color:grey; color:white; font-family: 'Segoe UI'");

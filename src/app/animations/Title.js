@@ -1,35 +1,36 @@
 import gsap from "gsap";
 import Splitting from "splitting";
-import Animation from "../classes/Animation"
+import Animation from "../classes/Animation";
 
 export default class Title extends Animation {
-  constructor({
+  constructor ({
     element,
     elements
   }) {
     super({ element, elements });
-    this.splitText()
+    this.splitText();
     this.elementLineSpans = this.element.querySelectorAll("span");
-    this.animateOut()
+    this.animateOut();
   }
   splitText() {
-    Splitting({ target: this.element, by: "lines" })
+    Splitting({ target: this.element, by: "lines" });
   }
   animateIn() {
+    gsap.set(this.element, { autoAlpha: 1, overflow: "hidden" });
     this.elementLineSpans.forEach(line => {
-      const lineIndex = line.style.getPropertyValue("--line-index");
+      // const lineIndex = line.style.getPropertyValue("--line-index");
       gsap.timeline()
-        .set(this.element, { autoAlpha: 1, overflow: "hidden" })
+        // .set(this.element, { autoAlpha: 1, overflow: "hidden" })
         .fromTo(line, {
           y: "-100%"
         }, {
           y: 0,
           duration: 1.2,
-          ease: "expo.out"
-        })
-    })
+          ease: "expo.out",
+        });
+    });
   }
   animateOut() {
-    gsap.set(this.element, { autoAlpha: 0 })
+    gsap.set(this.element, { autoAlpha: 0 });
   }
 }

@@ -8,7 +8,7 @@ export default class Home extends Page {
         wrapper: ".home__wrapper",
       },
       classes: {
-        active: "home--active",
+        active: "is-active",
       },
     });
   }

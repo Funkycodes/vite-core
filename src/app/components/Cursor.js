@@ -1,8 +1,8 @@
 import AutoBind from "auto-bind";
-import { lerp, clamp } from "../utils/math";
+import { lerp } from "../utils/math";
 
 export default class Cursor {
-  constructor(selector = ".cursor") {
+  constructor (selector = ".cursor") {
     AutoBind(this);
     this.selector = selector;
     this.mouse = {
@@ -14,7 +14,7 @@ export default class Cursor {
         current: 0,
         target: 0,
       },
-      ease: 0.15,
+      ease: 0.2,
     };
 
     this.scale = { current: 1, target: 1, ease: 0.1 };

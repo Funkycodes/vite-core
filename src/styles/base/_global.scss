@@ -24,23 +24,51 @@
 
 html {
   height: 100%;
-  font-size: calc(100vw / 1440 * 10);
+  width: 100%;
+
+  scroll-behavior: initial;
+  overscroll-behavior: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  font-size: min(calc(100vh / 900 * 10), calc(100vw / 1440 * 10));
+  line-height: 1;
+
+  @include media("<=tablet") {
+    font-size: min(calc(100vw / 992 * 10), calc(100vh / 750 * 10));
+  }
+
+  @include media("<=mobile2x") {
+    font-size: calc(100vw / 675 * 10);
+  }
 }
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
 body {
   min-height: 100%;
   width: 100%;
   font-size: 1.6rem;
   overflow-x: hidden;
+}
 
-  &::-webkit-scrollbar {
-    width: clamp(4px, 0.4rem, 8px);
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #272727;
-    border-radius: 2px;
-  }
+canvas {
+  @include cover;
+  pointer-events: none;
+  position: fixed;
+  z-index: z("canvas");
+}
 
-  &::-webkit-scrollbar-button {
-    display: none;
+.content {
+  @include cover;
+}
+
+[data-animation] {
+  span {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
   }
 }

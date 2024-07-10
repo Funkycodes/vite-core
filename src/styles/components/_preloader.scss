@@ -1,11 +1,11 @@
-.preloader {
-  @extend %cover;
+.c-preloader {
+  display: none;
+  @include cover;
   z-index: 12;
   &__wrapper {
-    @extend %cover;
+    @include cover;
     display: grid;
-    padding: 4rem;
-
+    padding: max(24px, 4rem);
     background: #272727;
     color: #f2f2f2;
 

@@ -18,12 +18,12 @@
     "vite-plugin-pug": "^0.3.2"
   },
   "dependencies": {
-    "@studio-freight/lenis": "^1.0.16",
     "auto-bind": "^5.0.1",
     "concurrently": "^8.2.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "gsap": "^3.11.5",
+    "locomotive-scroll": "5.0.0-beta.8",
     "lodash": "^4.17.21",
     "normalize-wheel": "^1.0.1",
     "pug": "^3.0.2"

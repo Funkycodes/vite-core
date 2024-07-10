@@ -1,23 +1,14 @@
-// Mixins and Extends
-
-%page {
-  position: relative;
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transition: opacity 0.35s ease, visibility 0.35s ease;
-
-  &--active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    z-index: auto;
-  }
+// flexbox
+@mixin flex($justify: flex-start, $align: flex-start, $flow: row wrap) {
+  flex-flow: $flow;
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
 }
 
-%cover {
+// Mixins and Extends
+
+@mixin cover() {
   position: absolute;
   object-fit: cover;
   left: 0;
@@ -26,23 +17,29 @@
   width: 100%;
 }
 
-%flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@mixin container() {
+  width: 100%;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  @include media("<=tablet") {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
 
-%abs-center {
+@mixin abs-center() {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%);
 }
-%ovh {
-  overflow: hidden;
+
+@mixin hide() {
+  visibility: hidden;
+  opacity: 0;
 }
-%wrapper {
-  margin: auto;
-  width: 90%;
-  max-width: 145rem;
+
+@mixin show() {
+  visibility: visible;
+  opacity: 1;
 }

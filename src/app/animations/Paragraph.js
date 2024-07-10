@@ -1,17 +1,17 @@
-import gsap from "gsap"
+import gsap from "gsap";
 import Splitting from "splitting";
 import Animation from "../classes/Animation";
 
 export default class Paragraph extends Animation {
-  constructor({ element, elements }) {
+  constructor ({ element, elements }) {
     super({
       element,
       elements
-    })
+    });
 
     this.splitText();
     this.ParagraphsLines = this.element.querySelectorAll("span");
-    this.animateOut()
+    this.animateOut();
   }
 
   splitText() {
@@ -32,13 +32,13 @@ export default class Paragraph extends Animation {
           delay: 0.15 * lineIndex,
           duration: 0.75,
           ease: "back.out(1)"
-        })
-    })
+        });
+    });
 
   }
   animateOut() {
     gsap.set(this.element, {
       autoAlpha: 0
-    })
+    });
   }
 }

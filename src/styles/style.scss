@@ -1,7 +1,8 @@
-@import "./abstracts/mixins";
 @import "./abstracts/variables";
-@import "./abstracts/breakpoints";
 @import "./abstracts/functions";
+@import "./abstracts/breakpoints";
+@import "./abstracts/extends";
+@import "./abstracts/mixins";
 
 @import "./base/reset";
 @import "./base/fonts";
@@ -12,6 +13,7 @@
 @import "./shared/typography";
 
 @import "./components/cursor";
+@import "./components/scrollbar";
 @import "./components/preloader";
 @import "./components/transition";
 

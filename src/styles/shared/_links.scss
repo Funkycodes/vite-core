@@ -1,25 +1,63 @@
-.animated-link {
-  width: fit-content;
+%link__wrapper {
   display: inline-block;
+  overflow: hidden;
   position: relative;
+  vertical-align: top;
+}
 
-  &::before {
-    position: absolute;
-    content: "";
-    left: 0;
-    right: 0;
-    top: calc(100% + 2px);
-    width: 100%;
-    height: 2px;
+%link__line {
+  @media (any-pointer: fine) {
     background: currentColor;
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transition: transform 0.7s var(--ease-out-expo);
+    width: 100%;
+  }
+}
 
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.5s;
+%link__line--visible {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+%link__line--hidden {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+%link {
+  @extend %link__wrapper;
+
+  display: inline-block;
+
+  &:after {
+    @extend %link__line;
+    @extend %link__line--visible;
   }
 
-  &:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
+  &:hover {
+    &:after {
+      @extend %link__line--hidden;
+    }
+  }
+}
+
+%link--hidden {
+  @extend %link__wrapper;
+
+  display: inline-block;
+
+  &:after {
+    @extend %link__line;
+    @extend %link__line--hidden;
+  }
+
+  &:hover {
+    &:after {
+      @extend %link__line--visible;
+    }
   }
 }

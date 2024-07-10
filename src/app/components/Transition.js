@@ -1,12 +1,12 @@
-import gsap from "gsap"
+import gsap from "gsap";
 import Component from "../classes/Component";
 
 export default class Transition extends Component {
-  constructor() {
+  constructor () {
     super({
-      element: ".transition",
+      element: ".c-transition",
       elements: {}
-    })
+    });
   }
 
   animate() {
@@ -24,6 +24,6 @@ export default class Transition extends Component {
         bottom: "unset"
       }).to(this.element, {
         scaleY: 0
-      })
+      });
   }
 }

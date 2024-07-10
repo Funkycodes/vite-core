@@ -1,0 +1,25 @@
+.c-scrollbar {
+  position: fixed;
+  z-index: z("preloader");
+  top: 0;
+  right: 4px;
+  height: 100%;
+  padding-block: 4px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.c-scrollbar__inner {
+  height: 100%;
+}
+
+.c-scrollbar__thumb {
+  width: 6px;
+  // height: var(--height);
+  background: orange;
+  border-radius: 8px;
+  min-height: 24px;
+}

@@ -1,14 +1,14 @@
 import Page from "../classes/Page";
 
 export default class Home extends Page {
-  constructor() {
+  constructor () {
     super({
       selector: ".about",
       selectors: {
         wrapper: ".about__wrapper",
       },
       classes: {
-        active: "about--active",
+        active: "is-active"
       },
     });
   }
